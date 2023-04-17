@@ -1,5 +1,6 @@
 import random
 import pygame
+from highscore import HighScore
 
 
 pygame.font.init()
@@ -728,6 +729,8 @@ def main():
  
         # Check if user lost
         if check_lost(locked_positions):
+            none = HighScore(None, score)
+            none.save()
             run = False
  
     draw_text_middle("You Lost", 40, (255,255,255), win)
