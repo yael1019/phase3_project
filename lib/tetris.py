@@ -341,7 +341,7 @@ shape_colors = [(0, 230, 172), (255, 80, 80), (0, 255, 255), (255, 255, 102), (2
 #     # the location of the score on the screen
 #     # surface.blit(label, (sx + 20, sy + 160))
 
-#     for i in range(len(grid)):
+#     for i in range(len(grid)): 
 #         for j in range(len(grid[i])):
 #             pygame.draw.rect(surface, grid[i][j], (top_left_x + j*30, top_left_y + i*30, 30, 30), 0)
     
@@ -480,7 +480,7 @@ shape_colors = [(0, 230, 172), (255, 80, 80), (0, 255, 255), (255, 255, 102), (2
 # main_menu()
 
  
-class Piece(object):
+class Piece():
     rows = 20  # y
     columns = 10  # x
  
@@ -631,7 +631,7 @@ def draw_window(surface, score = 0):
     # pygame.display.update()
  
  
-def main():
+def main(win):
     global grid
  
     locked_positions = {}  # (x,y):(255,0,0)
@@ -739,6 +739,7 @@ def main():
  
  
 def main_menu():
+    win = pygame.display.set_mode((s_width, s_height))
     run = True
     while run:
         win.fill((0,0,0))
@@ -749,12 +750,11 @@ def main_menu():
                 run = False
  
             if event.type == pygame.KEYDOWN:
-                main()
+                main(win)
     pygame.quit()
  
  
-win = pygame.display.set_mode((s_width, s_height))
 pygame.display.set_caption('Tetris')
  
-main_menu()  # start game
+#main_menu()  # start game
  
