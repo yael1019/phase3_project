@@ -61,12 +61,11 @@ class CLI:
             SELECT * FROM users
         """
         all = CURSOR.execute(sql).fetchall()
-        users = [CLI(data[1], data[2], data[0]) for data in all]
-        for i in users:
-            if i.username == user_name and i.password == password:
-                self.start()
-            else:
-                print('Invalid username or password')
+        for i in all:
+            if i[1] == user_name and i[2] == password:
+                return self.start()
+        print('Invalid username or password')
+        self.log_in()
 
 
     def create_account(self):
@@ -77,6 +76,7 @@ class CLI:
         password = input(">>>")
         self.password = password
         self.create_user()
+        self.start()
 
     def start(self):
         self.show_menu()
