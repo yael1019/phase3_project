@@ -4,7 +4,7 @@ class CLI:
     
     def __init__(self,username=None,password=None):
         self.welcome()
-        self.user_authentication()
+        # self.user_authentication()
         #self.username = username
         #self.password = password
 
