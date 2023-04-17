@@ -1,5 +1,6 @@
 from tetris import main_menu
 from lib import CONN, CURSOR
+import ipdb
 
 
 class CLI:
@@ -10,6 +11,9 @@ class CLI:
         self.username = username
         self.password = password
         self.id = id
+    
+    def __repr__(self):
+        return f'<CLI id={self.id} username={self.username} password={self.password}>'
 
     @classmethod
     def create(cls):
@@ -44,7 +48,6 @@ class CLI:
             self.log_in()
         elif user_input =="2":
             self.create_account()
-            pass
         else:
             print("Select valid option")
             self.user_authentication()
@@ -54,12 +57,17 @@ class CLI:
         user_name = input(">>> ")
         print("Password")
         password = input(">>> ")
-        sql = "SELECT * FROM users WHERE username = (?), password = (?)"
-        a = CURSOR.execute(sql,(user_name, password))
-        return a
+        sql = """
+            SELECT * FROM users
+        """
+        all = CURSOR.execute(sql).fetchall()
+        users = [CLI(data[1], data[2], data[0]) for data in all]
+        for i in users:
+            if i.username == user_name and i.password == password:
+                self.start()
+            else:
+                print('Invalid username or password')
 
-
-        pass
 
     def create_account(self):
         print("Enter Username")
@@ -94,4 +102,5 @@ class CLI:
         print("3. Exit")
 
 # CLI.create()
+# ipdb.set_trace()
 cli = CLI()
