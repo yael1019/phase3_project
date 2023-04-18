@@ -51,3 +51,5 @@ class HighScore:
         CURSOR.execute(sql)
         CONN.commit()
 
+HighScore.create_table()
+HighScore.add_column()

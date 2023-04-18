@@ -125,5 +125,5 @@ class CLI:
         print("2. Scores")
         print("3. Exit")
 
-
+CLI.create()
 cli = CLI()
