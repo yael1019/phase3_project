@@ -4,6 +4,7 @@ import ipdb
 
 
 class CLI:
+
     
     def __init__(self,username=None,password=None, id = None):
         self.welcome()
@@ -63,6 +64,8 @@ class CLI:
         all = CURSOR.execute(sql).fetchall()
         for i in all:
             if i[1] == user_name and i[2] == password:
+                self.username = user_name
+                self.password = password
                 return self.start()
         print('Invalid username or password')
         self.log_in()
@@ -85,7 +88,7 @@ class CLI:
             user_input = input(">>> ")
             if user_input =="1":
                 pass
-                main_menu()
+                main_menu(self.username)
             elif user_input =="2":
                 pass
             elif user_input =="3":
@@ -101,6 +104,5 @@ class CLI:
         print("2. Scores")
         print("3. Exit")
 
-# CLI.create()
-# ipdb.set_trace()
+
 cli = CLI()

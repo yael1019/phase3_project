@@ -1,7 +1,7 @@
 from lib import CONN, CURSOR
 
 class HighScore:
-    def __init__(self, name, highscore = None, id = None):
+    def __init__(self, name = None, highscore = None, id = None):
         self.name = name
         self.highscore = highscore
         self.id = id
