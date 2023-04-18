@@ -631,7 +631,7 @@ def draw_window(surface, score = 0):
     # pygame.display.update()
  
  
-def main(win,username):
+def main(win,username,id):
     global grid
  
     locked_positions = {}  # (x,y):(255,0,0)
@@ -729,7 +729,7 @@ def main(win,username):
  
         # Check if user lost
         if check_lost(locked_positions):
-            none = HighScore(username,score)
+            none = HighScore(username,score, id)
             none.save()
             run = False
  
@@ -738,7 +738,7 @@ def main(win,username):
     pygame.time.delay(2000)
  
  
-def main_menu(username):
+def main_menu(username, id):
     win = pygame.display.set_mode((s_width, s_height))
     run = True
     while run:
@@ -750,7 +750,7 @@ def main_menu(username):
                 run = False
  
             if event.type == pygame.KEYDOWN:
-                main(win,username)
+                main(win,username,id)
     pygame.quit()
  
  
