@@ -8,6 +8,7 @@ ipdb = "*"
 sqlalchemy = "*"
 alembic = "*"
 pygame = "*"
+ascii_magic = "*"
 
 [dev-packages]
 
