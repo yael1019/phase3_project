@@ -631,7 +631,7 @@ def draw_window(surface, score = 0):
     # pygame.display.update()
  
  
-def main(win):
+def main(win,username):
     global grid
  
     locked_positions = {}  # (x,y):(255,0,0)
@@ -729,7 +729,7 @@ def main(win):
  
         # Check if user lost
         if check_lost(locked_positions):
-            none = HighScore(None, score)
+            none = HighScore(username,score)
             none.save()
             run = False
  
@@ -738,7 +738,7 @@ def main(win):
     pygame.time.delay(2000)
  
  
-def main_menu():
+def main_menu(username):
     win = pygame.display.set_mode((s_width, s_height))
     run = True
     while run:
@@ -750,11 +750,13 @@ def main_menu():
                 run = False
  
             if event.type == pygame.KEYDOWN:
-                main(win)
+                main(win,username)
     pygame.quit()
  
  
+
 pygame.display.set_caption('Tetris')
  
 #main_menu()  # start game
+
  
