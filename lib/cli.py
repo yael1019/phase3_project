@@ -101,12 +101,22 @@ class CLI:
             if user_input =="1":
                 main_menu(self.username, self.id)
             elif user_input =="2":
-                pass
+                self.show_scores()
             elif user_input =="3":
                 print("Goodbye thanks for playing!")
                 pass
             else:
                 print("Invalid input please try again")
+    
+    def show_scores(self):
+        sql = """
+            SELECT highscore FROM highscores WHERE user_id = (?)
+        """
+        scores = CURSOR.execute(sql,(self.id,)).fetchall()
+        print("/////YOUR SCORES/////")
+        for i in scores:
+            print(i[0])
+        pass
                     
         
     def show_menu(self):
