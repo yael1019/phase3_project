@@ -1,6 +1,6 @@
 from tetris import main_menu
 from lib import CONN, CURSOR
-import ipdb
+# import ipdb
 
 
 class CLI:
@@ -100,6 +100,9 @@ class CLI:
         print("1. Play Tetris")
         print("2. Scores")
         print("3. Exit")
+
+
+
 
 # CLI.create()
 # ipdb.set_trace()
