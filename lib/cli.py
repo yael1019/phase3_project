@@ -66,6 +66,10 @@ class CLI:
             if i[1] == user_name and i[2] == password:
                 self.username = user_name
                 self.password = password
+                sql = """
+                    SELECT id FROM users WHERE username = (?)
+                """
+                self.id = CURSOR.execute(sql,(user_name,)).fetchone()[0]
                 return self.start()
         print('Invalid username or password')
         self.log_in()
@@ -87,8 +91,7 @@ class CLI:
         while user_input != "3":
             user_input = input(">>> ")
             if user_input =="1":
-                pass
-                main_menu(self.username)
+                main_menu(self.username, self.id)
             elif user_input =="2":
                 pass
             elif user_input =="3":
