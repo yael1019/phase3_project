@@ -1,7 +1,13 @@
 from tetris import main_menu
 from lib import CONN, CURSOR
-import ipdb
+# import ipdb
+from ascii import welcome_purple, welcome_blue
+# from ascii_magic import AsciiArt
+import random
 
+# my_art = AsciiArt.from_image('tetris7.png')
+welcome = random.choice([welcome_purple, welcome_blue])
+# print(welcome)
 
 class CLI:
 
@@ -38,7 +44,9 @@ class CLI:
 
 
     def welcome(self):
-        print("/////ARE YOU READY TO PLAY SOME TETRIS?!/////")
+        # print("/////ARE YOU READY TO PLAY SOME TETRIS?!/////")
+        print(welcome)
+        # my_art.to_terminal()
 
     def user_authentication(self):
         print("Select Option")
