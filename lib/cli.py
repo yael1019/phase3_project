@@ -102,7 +102,9 @@ class CLI:
                 main_menu(self.username, self.id)
             elif user_input =="2":
                 self.show_scores()
-            elif user_input =="3":
+            elif user_input == '3':
+                self.leaderboard()
+            elif user_input =="4":
                 print("Goodbye thanks for playing!")
                 pass
             else:
@@ -117,13 +119,26 @@ class CLI:
         for i in scores:
             print(i[0])
         pass
+
+    @classmethod
+    def leaderboard(cls):
+        sql = """
+            SELECT name, highscore FROM highscores ORDER BY highscore DESC
+        """
+        all = CURSOR.execute(sql).fetchall()
+        print("/////LEADERBOARD/////")
+        for user in all:
+            print(user[0], user[1])
                     
         
     def show_menu(self):
         print("Please choose an option:")
         print("1. Play Tetris")
         print("2. Scores")
-        print("3. Exit")
+        print('3. LeaderBoard')
+        print("4. Exit")
 
+# ipdb.set_trace()
 CLI.create()
 cli = CLI()
+

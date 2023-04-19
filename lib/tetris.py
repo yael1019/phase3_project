@@ -673,7 +673,7 @@ def main(win,username,id):
             if event.type == pygame.QUIT:
                 run = False
                 pygame.display.quit()
-                quit()
+                # quit()
  
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:
