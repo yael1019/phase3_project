@@ -52,4 +52,4 @@ class HighScore:
         CONN.commit()
 
 HighScore.create_table()
-HighScore.add_column()
+# HighScore.add_column()
